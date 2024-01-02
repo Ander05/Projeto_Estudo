@@ -18,9 +18,9 @@ Library    base64
 #    Resources    #
 ##########################################################################
 Resource    hooks.robot
-Resource    
+Resource    ../auto/pages/variables_banco.resource
 
 ##########################################################################
 #    Keywords    #
 ##########################################################################
-Resource        ../auto/keywords/keywords.robot
+Resource        ../auto/keywords/keywords_banco.robot

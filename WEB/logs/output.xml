@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.0.2 (Python 3.11.3 on win32)" generated="20240102 11:14:39.666" rpa="false" schemaversion="3">
+<suite id="s1" name="Projeto Estudo" source="C:\Users\ander\OneDrive\Área de Trabalho\Projeto_Estudo">
+<suite id="s1-s1" name="WEB" source="C:\Users\ander\OneDrive\Área de Trabalho\Projeto_Estudo\WEB">
+<suite id="s1-s1-s1" name="Robot" source="C:\Users\ander\OneDrive\Área de Trabalho\Projeto_Estudo\WEB\robot">
+<suite id="s1-s1-s1-s1" name="Tests" source="C:\Users\ander\OneDrive\Área de Trabalho\Projeto_Estudo\WEB\robot\tests">
+<suite id="s1-s1-s1-s1-s1" name="TestCase Banco" source="C:\Users\ander\OneDrive\Área de Trabalho\Projeto_Estudo\WEB\robot\tests\TestCase_Banco.robot">
+<test id="s1-s1-s1-s1-s1-t1" name="caso 01" line="8">
+<kw name="Acessar sistema" library="hooks">
+<kw name="Set Variable" library="BuiltIn">
+<var>${downloadDir}</var>
+<arg>${EXECDIR}${/}WEB${/}download</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20240102 11:14:41.206" level="INFO">${downloadDir} = C:\Users\ander\OneDrive\Área de Trabalho\Projeto_Estudo\WEB\download</msg>
+<status status="PASS" starttime="20240102 11:14:41.205" endtime="20240102 11:14:41.206"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${chromeOptions}</var>
+<arg>sys.modules['selenium.webdriver'].ChromeOptions()</arg>
+<arg>sys, selenium.webdriver</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20240102 11:14:41.206" level="INFO">${chromeOptions} = &lt;selenium.webdriver.chrome.options.Options object at 0x000002B737B31390&gt;</msg>
+<status status="PASS" starttime="20240102 11:14:41.206" endtime="20240102 11:14:41.206"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${prefs}</var>
+<arg>download.default_directory=${downloadDir}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20240102 11:14:41.207" level="INFO">${prefs} = {'download.default_directory': 'C:\\Users\\ander\\OneDrive\\Área de Trabalho\\Projeto_Estudo\\WEB\\download'}</msg>
+<status status="PASS" starttime="20240102 11:14:41.206" endtime="20240102 11:14:41.207"/>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<arg>${chromeOptions}</arg>
+<arg>add_experimental_option</arg>
+<arg>prefs</arg>
+<arg>${prefs}</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" starttime="20240102 11:14:41.207" endtime="20240102 11:14:41.208"/>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<arg>${chromeOptions}</arg>
+<arg>add_argument</arg>
+<arg>--disable-gpu</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" starttime="20240102 11:14:41.208" endtime="20240102 11:14:41.209"/>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<arg>${chromeOptions}</arg>
+<arg>add_argument</arg>
+<arg>--window-size\=640,480</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" starttime="20240102 11:14:41.209" endtime="20240102 11:14:41.209"/>
+</kw>
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>url=${banco.url}</arg>
+<arg>browser=Chrome</arg>
+<arg>options=${chromeOptions}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20240102 11:14:41.213" level="INFO">Opening browser 'Chrome' to base url 'https://demo.testfire.net/login.jsp'.</msg>
+<status status="PASS" starttime="20240102 11:14:41.210" endtime="20240102 11:14:44.776"/>
+</kw>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<arg>filename=test.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20240102 11:14:44.903" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="test.png"&gt;&lt;img src="test.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20240102 11:14:44.776" endtime="20240102 11:14:44.903"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${downloadDir}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20240102 11:14:44.904" level="INFO">C:\Users\ander\OneDrive\Área de Trabalho\Projeto_Estudo\WEB\download</msg>
+<status status="PASS" starttime="20240102 11:14:44.903" endtime="20240102 11:14:44.904"/>
+</kw>
+<status status="PASS" starttime="20240102 11:14:41.204" endtime="20240102 11:14:44.904"/>
+</kw>
+<tag>banco</tag>
+<status status="PASS" starttime="20240102 11:14:41.203" endtime="20240102 11:14:44.905"/>
+</test>
+<kw name="Close All Browsers" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="PASS" starttime="20240102 11:14:44.907" endtime="20240102 11:14:52.393"/>
+</kw>
+<status status="PASS" starttime="20240102 11:14:39.723" endtime="20240102 11:14:52.393"/>
+</suite>
+<status status="PASS" starttime="20240102 11:14:39.718" endtime="20240102 11:14:52.398"/>
+</suite>
+<status status="PASS" starttime="20240102 11:14:39.713" endtime="20240102 11:14:52.402"/>
+</suite>
+<status status="PASS" starttime="20240102 11:14:39.708" endtime="20240102 11:14:52.406"/>
+</suite>
+<status status="PASS" starttime="20240102 11:14:39.669" endtime="20240102 11:14:52.411"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="1" fail="0" skip="0">banco</stat>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Projeto Estudo">Projeto Estudo</stat>
+<stat pass="1" fail="0" skip="0" id="s1-s1" name="WEB">Projeto Estudo.WEB</stat>
+<stat pass="1" fail="0" skip="0" id="s1-s1-s1" name="Robot">Projeto Estudo.WEB.Robot</stat>
+<stat pass="1" fail="0" skip="0" id="s1-s1-s1-s1" name="Tests">Projeto Estudo.WEB.Robot.Tests</stat>
+<stat pass="1" fail="0" skip="0" id="s1-s1-s1-s1-s1" name="TestCase Banco">Projeto Estudo.WEB.Robot.Tests.TestCase Banco</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
