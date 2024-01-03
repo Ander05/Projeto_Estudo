@@ -1,0 +1,7 @@
+dados_banco:
+  uid: admin
+  passw: admin
+  url: https://demo.testfire.net/login.jsp
+
+Demo_Site:
+  url: https://demo.automationtesting.in/Register.html

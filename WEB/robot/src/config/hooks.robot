@@ -4,7 +4,7 @@ Resource            package.robot
 
 *** Keywords ***
 Acessar sistema
-    ${downloadDir}=    Set Variable     ${EXECDIR}${/}WEB${/}download
+    Set Global Variable    ${downloadDir}    ${EXECDIR}${/}WEB${/}download
 
     ${chromeOptions}    Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
     ${prefs}            Create Dictionary    download.default_directory=${downloadDir}
@@ -15,6 +15,30 @@ Acessar sistema
     # Call Method    ${chromeOptions}    add_argument    --headless
     # Call Method    ${chromeOptions}    add_argument    --window-size\=640,480
 
-    Open Browser    url=${banco.url}
+    Open Browser    url=${Demo_Site.url}
     ...    browser=Chrome
     ...    options=${chromeOptions}
+
+Validar Presença
+    [Arguments]    ${locator}
+    Scroll Element Into View         locator=${locator}
+    Wait Until Element Is Visible    locator=${locator}
+    Element Should Be Visible        locator=${locator}
+
+Preencher Campo
+    [Arguments]    ${locator}    ${text}
+    Scroll Element Into View         locator=${locator}
+    Wait Until Element Is Visible    locator=${locator}
+    Input Text                       locator=${locator}    text=${text}
+
+Clicar em
+    [Arguments]    ${locator}
+    Scroll Element Into View         locator=${locator}
+    Wait Until Element Is Visible    locator=${locator}
+    Click Element                    locator=${locator}
+
+Selecionar Valor Lista
+    [Arguments]    ${locator}    ${value}
+    Scroll Element Into View         ${locator}
+    Wait Until Element Is Visible    ${locator}
+    Select From List By Value        ${locator}    ${value}

@@ -17,10 +17,13 @@ Library    base64
 ##########################################################################
 #    Resources    #
 ##########################################################################
-Resource    hooks.robot
-Resource    ../auto/pages/variables_banco.resource
+Resource     hooks.robot
+Resource     ../auto/pages/variables_banco.resource
+Resource     ../auto/pages/variables_Demo.resource
+Variables    hooks.yml
 
 ##########################################################################
 #    Keywords    #
 ##########################################################################
-Resource        ../auto/keywords/keywords_banco.robot
+Resource    ../auto/keywords/keywords_banco.robot
+Resource    ../auto/keywords/keywords_demo.robot
