@@ -21,8 +21,8 @@ Acessar sistema
 
 Validar Presença
     [Arguments]    ${locator}
+    Wait Until Element Is Enabled    locator=${locator}
     Scroll Element Into View         locator=${locator}
-    Wait Until Element Is Visible    locator=${locator}
     Element Should Be Visible        locator=${locator}
 
 Preencher Campo
@@ -33,9 +33,9 @@ Preencher Campo
 
 Clicar em
     [Arguments]    ${locator}
-    Scroll Element Into View         locator=${locator}
-    Wait Until Element Is Visible    locator=${locator}
-    Click Element                    locator=${locator}
+    Scroll Element Into View         ${locator}
+    Wait Until Element Is Visible    ${locator}
+    Click Element                    ${locator}
 
 Selecionar Valor Lista
     [Arguments]    ${locator}    ${value}
