@@ -1,7 +1,6 @@
 *** Settings ***
 Resource    ../src/config/package.robot
-Suite Setup    Run Keywords      
-...    Acessar sistema
+Suite Setup    Acessar sistema
 
 Suite Teardown    Close All Browsers
 # robot -d ./WEB/logs -i Demo .
