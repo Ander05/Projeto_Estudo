@@ -3,16 +3,31 @@ Documentation       Aqui estarão presentes todos arquivos para inicialização 
 Resource            package.robot
 
 *** Keywords ***
-Acessar sistema
-    ${downloadDir}=    Set Variable    ${EXECDIR}${/}robot${/}Downloads
-    Set Global Variable    ${downloadDir}
+Gerando Dados
+    ${gerar_pessoa}
+    ...    Create Dictionary    
+    ...    acao=gerar_pessoa
+    ...    pontuacao=N
+    ...    sexo=H
+    ...    txt_qtde=1
+    
+    ${Request_Pessoa}
+    ...    POST
+    ...    url=https://www.4devs.com.br/ferramentas_online.php
+    ...    data=${gerar_pessoa}
+    
+    ${PessoaGerada}    Set Variable    ${Request_Pessoa.json()[0]}
+    Set Global Variable    ${PessoaGerada}
 
-    ${chromeOptions}=    Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
-    ${prefs}=    Create Dictionary    download.default_directory=${downloadDir}
-    Call Method    ${chromeOptions}    add_experimental_option    prefs    ${prefs}
-    Call Method    ${chromeOptions}    add_argument    --disable-gpu
-    Call Method    ${chromeOptions}    add_argument    --start-maximized
 
-    Open Browser    url=###SITE###
-    ...    browser=Chrome
-    ...    options=${chromeOptions}
+    #### Para chamar os dados basta usar os dados abaixo no input
+    # ${PessoaGerada}[nome]        Nome Completo
+    # ${PessoaGerada}[mae]         Nome da Mãe
+    # ${PessoaGerada}[cpf]         CPF
+    # ${PessoaGerada}[rg]          RG
+    # ${PessoaGerada}[data_nasc]   Data de Nascimento
+    # ${PessoaGerada}[email]       E-mail
+    # ${PessoaGerada}[cep]         CEP
+    # ${PessoaGerada}[numero]      Nr de Residencia
+
+    # Log    ${Request_Pessoa.json()[0]['nome']}

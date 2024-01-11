@@ -19,6 +19,22 @@ Acessar sistema
     ...    browser=Chrome
     ...    options=${chromeOptions}
 
+Gerando Dados
+    ${gerar_pessoa}
+    ...    Create Dictionary    
+    ...    acao=gerar_pessoa
+    ...    pontuacao=N
+    ...    sexo=H
+    ...    txt_qtde=1
+    
+    ${Request_Pessoa}
+    ...    POST
+    ...    url=https://www.4devs.com.br/ferramentas_online.php
+    ...    data=${gerar_pessoa}
+    
+    ${PessoaGerada}    Set Variable    ${Request_Pessoa.json()[0]}
+    Set Global Variable    ${PessoaGerada}
+
 Validar Presença
     [Arguments]    ${locator}
     Wait Until Element Is Enabled    locator=${locator}
