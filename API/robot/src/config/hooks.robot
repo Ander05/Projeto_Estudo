@@ -31,3 +31,25 @@ Gerando Dados
     # ${PessoaGerada}[numero]      Nr de Residencia
 
     # Log    ${Request_Pessoa.json()[0]['nome']}
+
+
+
+Extraindo_rodada
+    ${HEADERS}    Create Dictionary    Authorization=Basic Z2RlbWJhY2tlbmRzZXJ2aWNlVXNlckludGVybmFsOlJTeTAyMThX
+
+    ${dados_rodada}    GET
+    ...    url=https://dgdem-backend-service.demanda-abastecimento.grupoboticario.digital/api/round/current
+    ...    headers=${HEADERS}
+    ...    expected_status=200
+    ...    msg=Serviço fora do ar
+
+    ${INICIO}    Convert Date    ${dados_rodada.json()["startDate"]}
+    ...    result_format=%d/%m/%Y
+    ${FIM}    Convert Date    ${dados_rodada.json()["endDate"]}
+    ...    result_format=%d/%m/%Y
+    
+    ${nr_rodada_be}    Catenate    Rodada:    ${dados_rodada.json()["round"]}
+    ${dt_rodada_be}    Catenate    ${INICIO}     a    ${FIM}
+    
+    Set Global Variable    ${nr_rodada_be}
+    Set Global Variable    ${dt_rodada_be}
